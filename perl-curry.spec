@@ -4,7 +4,7 @@
 #
 Name     : perl-curry
 Version  : 1.001000
-Release  : 9
+Release  : 10
 URL      : https://cpan.metacpan.org/authors/id/M/MS/MSTROUT/curry-1.001000.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MS/MSTROUT/curry-1.001000.tar.gz
 Summary  : 'Create automatic curried method call closures for any class or object'
