@@ -4,12 +4,13 @@
 #
 Name     : perl-curry
 Version  : 1.001000
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/M/MS/MSTROUT/curry-1.001000.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MS/MSTROUT/curry-1.001000.tar.gz
 Summary  : 'Create automatic curried method call closures for any class or object'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
+Requires: perl-curry-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -21,19 +22,30 @@ object
 Summary: dev components for the perl-curry package.
 Group: Development
 Provides: perl-curry-devel = %{version}-%{release}
+Requires: perl-curry = %{version}-%{release}
 
 %description dev
 dev components for the perl-curry package.
 
 
+%package perl
+Summary: perl components for the perl-curry package.
+Group: Default
+Requires: perl-curry = %{version}-%{release}
+
+%description perl
+perl components for the perl-curry package.
+
+
 %prep
 %setup -q -n curry-1.001000
+cd %{_builddir}/curry-1.001000
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -43,7 +55,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -63,9 +75,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/curry.pm
-/usr/lib/perl5/vendor_perl/5.28.2/curry/weak.pm
 
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/curry.3
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/curry.pm
+/usr/lib/perl5/vendor_perl/5.30.1/curry/weak.pm
