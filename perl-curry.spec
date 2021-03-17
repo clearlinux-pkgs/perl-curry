@@ -4,7 +4,7 @@
 #
 Name     : perl-curry
 Version  : 1.001000
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/M/MS/MSTROUT/curry-1.001000.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MS/MSTROUT/curry-1.001000.tar.gz
 Summary  : 'Create automatic curried method call closures for any class or object'
@@ -82,5 +82,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.3/curry.pm
-/usr/lib/perl5/vendor_perl/5.30.3/curry/weak.pm
+/usr/lib/perl5/vendor_perl/5.32.1/curry.pm
+/usr/lib/perl5/vendor_perl/5.32.1/curry/weak.pm
